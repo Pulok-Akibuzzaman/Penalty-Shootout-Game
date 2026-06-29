@@ -1,0 +1,250 @@
+/* ── Reset & Base ── */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #1b5e20;
+  color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── Screens ── */
+.screen {
+  display: none;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.screen.active { display: flex; }
+
+/* ── Welcome ── */
+.welcome-content, .setup-content, .gameover-content, .about-content {
+  text-align: center;
+  max-width: 420px;
+  width: 100%;
+}
+
+.trophy {
+  font-size: 80px;
+  animation: bounce 1.2s infinite alternate;
+}
+@keyframes bounce {
+  to { transform: translateY(-18px); }
+}
+
+h1 {
+  font-size: 2.4rem;
+  margin: 12px 0 6px;
+  text-shadow: 2px 2px 6px rgba(0,0,0,.4);
+}
+.tagline { opacity: .8; margin-bottom: 28px; font-size: 1.1rem; }
+
+/* ── Buttons ── */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .15s, box-shadow .15s;
+}
+.btn:hover { transform: scale(1.03); }
+.btn:active { transform: scale(.97); }
+
+.btn-primary {
+  background: #fff;
+  color: #1b5e20;
+  box-shadow: 0 4px 14px rgba(0,0,0,.25);
+}
+.btn-secondary {
+  background: rgba(255,255,255,.15);
+  color: #fff;
+  border: 2px solid rgba(255,255,255,.4);
+}
+
+/* ── Setup ── */
+.setup-content label {
+  display: block;
+  text-align: left;
+  margin: 16px 0 6px;
+  font-weight: 600;
+}
+.setup-content input,
+.setup-content select {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: rgba(255,255,255,.9);
+  color: #222;
+}
+
+/* ── HUD ── */
+.game-hud {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 520px;
+  margin-bottom: 14px;
+}
+.hud-item { text-align: center; }
+.hud-label { font-size: .75rem; text-transform: uppercase; opacity: .7; display: block; }
+.hud-value { font-size: 1.6rem; font-weight: 700; }
+
+/* ── Field & Goal ── */
+.field {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.goal {
+  position: relative;
+  width: 320px;
+  height: 180px;
+  margin-bottom: 10px;
+}
+
+.crossbar {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 10px;
+  background: #fff;
+  border-radius: 5px;
+  z-index: 3;
+}
+.post {
+  position: absolute;
+  top: 0;
+  width: 10px;
+  height: 100%;
+  background: #fff;
+  border-radius: 5px;
+  z-index: 3;
+}
+.post-left { left: 0; }
+.post-right { right: 0; }
+
+.net {
+  position: absolute;
+  top: 10px; left: 10px;
+  width: calc(100% - 20px);
+  height: calc(100% - 10px);
+  background:
+    repeating-linear-gradient(90deg, rgba(255,255,255,.15) 0 1px, transparent 1px 14px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.15) 0 1px, transparent 1px 14px);
+  border-bottom: 3px solid rgba(255,255,255,.25);
+  z-index: 1;
+}
+
+/* ── Goalkeeper ── */
+.goalkeeper {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 48px;
+  z-index: 2;
+  transition: left .35s ease-out;
+}
+.goalkeeper.dive-left  { left: 15%; }
+.goalkeeper.dive-right { left: 85%; }
+
+/* ── Ball ── */
+.ball {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 36px;
+  z-index: 4;
+  transition: bottom .4s ease-in, left .4s ease-in;
+}
+.ball.shoot-left   { bottom: 60px; left: 18%; }
+.ball.shoot-center { bottom: 80px; left: 50%; }
+.ball.shoot-right  { bottom: 60px; left: 82%; }
+
+/* ── Result Text ── */
+.result-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  min-height: 42px;
+  margin: 8px 0;
+  text-align: center;
+}
+.result-text.goal { color: #76ff03; }
+.result-text.miss { color: #ff5252; }
+
+/* ── Direction Buttons ── */
+.shoot-label { margin-bottom: 10px; opacity: .8; }
+.direction-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+.btn-dir {
+  flex: 1;
+  max-width: 120px;
+  padding: 14px 8px;
+  border: 2px solid rgba(255,255,255,.5);
+  border-radius: 12px;
+  background: rgba(255,255,255,.1);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s, transform .1s;
+}
+.btn-dir:hover { background: rgba(255,255,255,.25); }
+.btn-dir:active { transform: scale(.93); }
+.btn-dir:disabled {
+  opacity: .4;
+  cursor: default;
+  transform: none;
+}
+
+/* ── Game Over ── */
+.gameover-content h2 { font-size: 2rem; margin-bottom: 12px; }
+.gameover-content p { font-size: 1.2rem; margin: 6px 0; }
+.new-record {
+  font-size: 1.4rem;
+  color: #ffd600;
+  animation: pulse .6s infinite alternate;
+  margin: 10px 0;
+}
+@keyframes pulse { to { transform: scale(1.12); } }
+
+/* ── About ── */
+.about-content {
+  text-align: left;
+  max-width: 480px;
+}
+.about-content h2 { text-align: center; margin-bottom: 18px; }
+.about-content h3 { margin: 16px 0 6px; color: #a5d6a7; }
+.about-content ol, .about-content ul { padding-left: 22px; margin-bottom: 8px; }
+.about-content li { margin: 4px 0; }
+.about-content .btn { margin-top: 24px; }
+
+/* ── Responsive ── */
+@media (max-width: 400px) {
+  .goal { width: 260px; height: 150px; }
+  .goalkeeper { font-size: 38px; }
+  .ball { font-size: 28px; }
+  h1 { font-size: 1.8rem; }
+  .btn-dir { padding: 10px 4px; font-size: .9rem; }
+}
+
+/* ── Game screen flex layout ── */
+#game-screen {
+  flex-direction: column;
+}

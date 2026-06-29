@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Football Penalty Shootout</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Welcome Screen -->
+  <div id="welcome-screen" class="screen active">
+    <div class="welcome-content">
+      <div class="trophy">⚽</div>
+      <h1>Football Penalty<br>Shootout</h1>
+      <p class="tagline">Can you beat the keeper?</p>
+      <button id="btn-start" class="btn btn-primary">Start Game</button>
+      <button id="btn-about" class="btn btn-secondary">About / Info</button>
+    </div>
+  </div>
+
+  <!-- Setup Screen -->
+  <div id="setup-screen" class="screen">
+    <div class="setup-content">
+      <h2>Player Setup</h2>
+      <label for="player-name">Your Name</label>
+      <input type="text" id="player-name" placeholder="Enter your name" maxlength="20">
+      <label for="country-select">Choose Your Country</label>
+      <select id="country-select">
+        <option value="">-- Select --</option>
+        <option value="🇧🇷 Brazil">🇧🇷 Brazil</option>
+        <option value="🇦🇷 Argentina">🇦🇷 Argentina</option>
+        <option value="🇩🇪 Germany">🇩🇪 Germany</option>
+        <option value="🇫🇷 France">🇫🇷 France</option>
+        <option value="🏴 England">🏴 England</option>
+        <option value="🇪🇸 Spain">🇪🇸 Spain</option>
+        <option value="🇵🇹 Portugal">🇵🇹 Portugal</option>
+        <option value="🇮🇹 Italy">🇮🇹 Italy</option>
+        <option value="🇳🇱 Netherlands">🇳🇱 Netherlands</option>
+        <option value="🇭🇷 Croatia">🇭🇷 Croatia</option>
+      </select>
+      <button id="btn-play" class="btn btn-primary">Play!</button>
+      <button id="btn-back-setup" class="btn btn-secondary">Back</button>
+    </div>
+  </div>
+
+  <!-- Game Screen -->
+  <div id="game-screen" class="screen">
+    <div class="game-hud">
+      <div class="hud-item">
+        <span class="hud-label">Score</span>
+        <span id="current-score" class="hud-value">0</span>
+      </div>
+      <div class="hud-item">
+        <span class="hud-label" id="player-display">Player</span>
+        <span id="lives-display" class="hud-value lives">❤️❤️❤️</span>
+      </div>
+      <div class="hud-item">
+        <span class="hud-label">High Score</span>
+        <span id="high-score" class="hud-value">0</span>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="goal">
+        <div class="crossbar"></div>
+        <div class="post post-left"></div>
+        <div class="post post-right"></div>
+        <div class="net"></div>
+        <!-- Goalkeeper -->
+        <div id="goalkeeper" class="goalkeeper">🧤</div>
+        <!-- Ball -->
+        <div id="ball" class="ball">⚽</div>
+      </div>
+
+      <div id="result-text" class="result-text"></div>
+
+      <div class="controls">
+        <p class="shoot-label">Choose your shot direction:</p>
+        <div class="direction-buttons">
+          <button class="btn-dir" data-dir="left">⬅️ Left</button>
+          <button class="btn-dir" data-dir="center">⬆️ Center</button>
+          <button class="btn-dir" data-dir="right">➡️ Right</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Over Screen -->
+  <div id="gameover-screen" class="screen">
+    <div class="gameover-content">
+      <h2>Game Over!</h2>
+      <p id="final-score-text">Your Score: 0</p>
+      <p id="final-highscore-text">High Score: 0</p>
+      <div id="new-record" class="new-record" style="display:none">🏆 New Record! 🏆</div>
+      <button id="btn-restart" class="btn btn-primary">Play Again</button>
+      <button id="btn-home" class="btn btn-secondary">Home</button>
+    </div>
+  </div>
+
+  <!-- About Screen -->
+  <div id="about-screen" class="screen">
+    <div class="about-content">
+      <h2>About the Game</h2>
+      <h3>What is it?</h3>
+      <p>A football penalty shootout game where you try to score as many goals as possible against an AI goalkeeper.</p>
+      <h3>How to Play</h3>
+      <ol>
+        <li>Enter your name and pick a country.</li>
+        <li>Choose a shot direction: Left, Center, or Right.</li>
+        <li>If the goalkeeper dives the other way, you score!</li>
+        <li>If the goalkeeper guesses correctly, you miss.</li>
+      </ol>
+      <h3>Rules</h3>
+      <ul>
+        <li>You have <strong>3 lives</strong> (misses allowed).</li>
+        <li>Each goal = <strong>+1 point</strong>.</li>
+        <li>After 3 misses the game is over.</li>
+        <li>Your highest score is saved automatically.</li>
+      </ul>
+      <h3>Controls</h3>
+      <p>Click or tap one of the three direction buttons to shoot.</p>
+      <button id="btn-back-about" class="btn btn-secondary">Back</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
